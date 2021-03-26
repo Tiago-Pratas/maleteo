@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="icon" href="/assets/img/icon.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+        {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="icon" href="../assets/img/icon.png">
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:400,500&display=swap" rel="stylesheet">
+        {% endblock %} 
+
+        {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+            <title>{% block title %}Welcome!{% endblock %}</title>
+    </head>
+    <body>
+        <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+    <img src="{{ asset('build/logo.svg') }}" alt="Maleteo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('login') }}">Login</a>
+        </li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+        <li class="nav-item float-right">
+            <a class="nav-link" href="{{ path('logout') }}">Logout</a>
+        </li>
+        <li class="nav-item float-right">
+            <a class="nav-link" href="{{ path('reqshow') }}">Peticiones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('opinion') }}">Opinons</a>
+        </li>
+
+        {% endif %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('register') }}">Register</a>
+        </li>
+        </ul>
+        </form>
+    </div>
+        </div>
+</nav>
+
+        {% block body %}
+        
+        {% endblock %}
+
+<footer class="footer">
+    <div class="wrapper">
+      <div class="container-fluid">
+        <img src={{ asset('build/logo.svg') }}
+            alt="Maleteo"
+            class="footer__logo">
+        <p class="footer__claim">
+          Hecho con ❤️ en Madrid
+        </p>
+      </div>
+    </div>
+  </footer>
+    </body>
+</html>

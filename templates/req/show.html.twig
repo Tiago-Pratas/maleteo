@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}request sent{% endblock %}
+
+{% block body %}
+
+    
+    <div>
+        <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">City</th>
+        <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for item in reqs %}
+<tr>
+    <td>{{ item.username }}</td>
+    <td>{{ item.email }}</td>
+    <td>{{ item.city }}</td>
+    <td><a href="{{ path('reqdelete', {id: item.id}) }}">Delete</td>
+    </tr>
+    </div>
+{% endfor %}
+
+
+{% endblock %}
